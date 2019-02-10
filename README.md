@@ -1,9 +1,20 @@
-# gatsby-starter-blog
-Gatsby starter for creating a blog
+# Quants & Quills website
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
+This repository is the canonical source for the code and (some) content for the Quants and Quills Inc website.
 
-`gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog`
+## Editing content
 
-## Running in development
-`gatsby develop`
+TODO: how does one edit the content?
+
+## Development
+
+The site is built with [Gatsby](https://www.gatsbyjs.org/) and deployed to [Netlify](https://www.netlify.com/).
+
+To work on the site, clone this repository and fire it up in NodeJS. 
+
+```bash
+git clone https://github.com/quantsquills/quantsquills.com.git
+cd quantsquills.com
+npm install
+npm run develop
+```
