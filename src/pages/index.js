@@ -1,53 +1,34 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import get from 'lodash/get'
-import Helmet from 'react-helmet'
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import Event from '../components/event';
 
-import Bio from '../components/Bio'
-import Layout from '../components/layout'
-import { rhythm } from '../utils/typography'
+import Layout from '../components/layout';
+import { rhythm } from '../utils/typography';
+import styles from './index.module.scss';
 
-class BlogIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const siteDescription = get(
-      this,
-      'props.data.site.siteMetadata.description'
-    )
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
+export const HomepageTemplate = props => {
+  console.log('props', props);
+  const { siteTitle, siteDescription } = props.data.site.siteMetadata;
+  const location = props.location;
+  const meetup = props.data.meetupGroup.childrenMeetupEvent[0];
 
-    return (
-      <Layout location={this.props.location}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
-          title={siteTitle}
-        />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = get(node, 'frontmatter.title') || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          )
-        })}
-      </Layout>
-    )
-  }
-}
+  return (
+    <Layout className={styles.container} location={location}>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        meta={[{ name: 'description', content: siteDescription }]}
+        title={siteTitle}
+      />
 
-export default BlogIndex
+      <section class={styles.hero}>
+        <Event meetup={meetup} />
+      </section>
+    </Layout>
+  );
+};
+
+export default HomepageTemplate;
 
 export const pageQuery = graphql`
   query {
@@ -71,5 +52,12 @@ export const pageQuery = graphql`
         }
       }
     }
+    meetupGroup {
+      childrenMeetupEvent {
+        name
+        description
+        local_date
+      }
+    }
   }
-`
+`;

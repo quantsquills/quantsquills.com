@@ -4,7 +4,7 @@ This repository is the canonical source for the code and (some) content for the 
 
 ## Editing content
 
-TODO: how does one edit the content?
+As a general rule, content — that is, all the words and pictures, etc that aren't part of the site design — lives in the `/content` folder. So if you need to edit something, that's probably where to look.
 
 ## Development
 
