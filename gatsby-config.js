@@ -70,7 +70,7 @@ module.exports = {
       options: {
         // Learn about environment variables: https://gatsby.app/env-vars
         // Your Meetup.com API key can be retrieved here: https://secure.meetup.com/fr-FR/meetup_api/key/
-        key: process.env.MEETUP_API_KEY,
+        // key: process.env.MEETUP_API_KEY,
         // Mandatory: the URL name of a Meetup Group.
         // See the URL of the group page, e.g. https://www.meetup.com/fr-FR/jamstack-paris
         groupUrlName: 'Hacks-Hackers-Brisbane',
