@@ -11,7 +11,7 @@ export const HomepageTemplate = props => {
   console.log('props', props);
   const { siteTitle, siteDescription } = props.data.site.siteMetadata;
   const location = props.location;
-  const meetup = props.data.meetupGroup.childrenMeetupEvent[0];
+  const meetup = props.data.meetupGroup.events[0];
 
   return (
     <Layout className={styles.container} location={location}>
@@ -53,7 +53,7 @@ export const pageQuery = graphql`
       }
     }
     meetupGroup {
-      childrenMeetupEvent {
+      events {
         name
         description
         local_date
