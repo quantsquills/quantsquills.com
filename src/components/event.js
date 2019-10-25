@@ -8,7 +8,7 @@ import styles from './event.module.scss';
 export default function Event({ meetup }) {
   return (
     <section className={styles.event}>
-      <h1>
+      <h1 style={{ fontSize: '3rem' }}>
         <span>Next event</span> {meetup.name}
       </h1>
       <p>
@@ -22,7 +22,13 @@ export default function Event({ meetup }) {
           Volunteer
         </a>
       </p>
-      <div dangerouslySetInnerHTML={{ __html: meetup.description }} />
+      <div
+        style={{
+          marginLeft: rhythm(2),
+          marginTop: rhythm(4),
+        }}
+        dangerouslySetInnerHTML={{ __html: meetup.description }}
+      />
     </section>
   );
 }
