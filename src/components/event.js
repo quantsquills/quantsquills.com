@@ -6,6 +6,8 @@ import { rhythm, scale } from '../utils/typography';
 import styles from './event.module.scss';
 
 export default function Event({ meetup }) {
+  const date = new Date(`${meetup.local_date}T${meetup.local_time}+1000`);
+
   return (
     <section className={styles.event}>
       <h1 style={{ fontSize: '3rem' }}>

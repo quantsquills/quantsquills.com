@@ -76,9 +76,19 @@ module.exports = {
         groupUrlName: 'Hacks-Hackers-Brisbane',
         // Optional parameters for retrieving Events, see full documentation at
         // https://www.meetup.com/meetup_api/docs/:urlname/events/?uri=%2Fmeetup_api%2Fdocs%2F%3Aurlname%2Fevents%2F#list
-        status: 'upcoming,past',
-        desc: 'true',
+        eventsOptions: [
+          {
+            status: `upcoming`,
+            desc: `true`,
+            page: 1,
+          },
+          {
+            status: `past`,
+            desc: `true`,
+            page: 5,
+          },
+        ],
       },
     },
   ],
-}
+};

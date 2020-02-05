@@ -12,6 +12,8 @@ Theme.overrideThemeStyles = () => ({
   },
   a: {
     textShadow: 'none',
+    background: 'none',
+    textDecoration: 'underline',
   },
   h1: {
     fontFamily: "'EB Garamond', EBGaramond, Garamond, serif",

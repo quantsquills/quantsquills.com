@@ -1,11 +1,53 @@
+:root {
+  --max-width: 50rem;
+}
+
+:global {
+  #___gatsby,
+  html,
+  body,
+  div[role='group'][tabindex] {
+    height: 100%;
+  }
+}
+
 .container {
-  display: block;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
   font-family: 'EB Garamond', EBGaramond, Garamond, serif;
 }
 
 .hero {
-  margin-top: 5rem;
+  font-size: 2.6rem;
+  max-width: var(--max-width);
+  margin: 2rem;
+  text-align: center;
+  font-family: Ariel, sans-serif;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  max-width: var(--max-width);
+  padding: 4rem;
+  justify-content: center;
+
+  > p {
+    width: 60%;
+    opacity: 0.6;
+  }
+
+  .logo {
+    width: 4rem;
+    margin-right: 2rem;
+  }
 }
 
 .about,
