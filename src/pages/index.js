@@ -25,16 +25,21 @@ export const HomepageTemplate = props => {
 
       <main className={styles.hero}>
         Quants &amp; Quills is a not-for-profit, volunteer run organisation
-        based in <strong>Brisbane, Australia</strong>. We are working on
-        building the future of media through a{' '}
+        based in <strong>Brisbane, Australia</strong>. We are exploring the
+        future of media through a{' '}
         <strong>
-          <Link to="/hacks-hackers-brisbane">monthly event</Link>
+          free{' '}
+          <a href="https://www.meetup.com/Hacks-Hackers-Brisbane/">
+            monthly event
+          </a>
         </strong>{' '}
         and{' '}
         <strong>
-          <Link to="/newsletter">newsletter</Link>
-        </strong>
-        .
+          <a href="https://us20.campaign-archive.com/home/?u=b159620fe75ddd72734247f92&id=298dc804d1">
+            newsletter
+          </a>
+        </strong>{' '}
+        bringing together technologists and storytellers.
       </main>
       <footer className={styles.footer}>
         <img src={logo} alt={`Quants & Quills logo`} className={styles.logo} />
@@ -42,8 +47,9 @@ export const HomepageTemplate = props => {
           Follow us on <a href="https://twitter.com/HacksHackersBNE">Twitter</a>{' '}
           or <a href="https://www.facebook.com/HacksHackersBNE">Facebook</a> or
           join the discussion on{' '}
-          <a href="https://storieswithdata.community">Slack</a>. Find out more
-          about <Link to="/sponsorship">sponsoring our work</Link> or{' '}
+          <a href="https://storieswithdata.community">Slack</a>. Find out about{' '}
+          <Link to="/volunteer">volunteering</Link> at,{' '}
+          <Link to="/sponsorship">sponsoring</Link> or{' '}
           <Link to="/pitch-a-talk">speaking</Link> at our events.
         </p>
       </footer>

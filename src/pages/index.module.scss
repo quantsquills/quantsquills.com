@@ -21,15 +21,29 @@
   position: fixed;
   left: 0;
   top: 0;
-  font-family: 'EB Garamond', EBGaramond, Garamond, serif;
+  overflow: auto;
+  // font-family: 'EB Garamond', EBGaramond, Garamond, serif;
+
+  @media (max-width: 50rem) {
+    justify-content: flex-start;
+  }
 }
 
 .hero {
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   max-width: var(--max-width);
-  margin: 2rem;
+  margin: 4rem 2rem 2rem 2rem;
   text-align: center;
-  font-family: Ariel, sans-serif;
+  // font-family: Ariel, sans-serif;
+
+  @media (max-width: 50rem) {
+    font-size: 5vw;
+    line-height: 1.2em;
+  }
+
+  @media (max-width: 20rem) {
+    font-size: 1rem;
+  }
 }
 
 .footer {
@@ -39,6 +53,10 @@
   padding: 4rem;
   justify-content: center;
 
+  @media (max-width: 30rem) {
+    padding: 2rem;
+  }
+
   > p {
     width: 60%;
     opacity: 0.6;
@@ -46,7 +64,8 @@
 
   .logo {
     width: 4rem;
-    margin-right: 2rem;
+    height: 4rem;
+    margin: 0 2rem 2rem 0;
   }
 }
 
