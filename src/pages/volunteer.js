@@ -41,61 +41,60 @@ export const Volunteer = props => {
             willing to help out the core group of organisers in any way — large
             or small.
           </p>
-        </SectionContent>
-      </Section>
-      <Section>
-        <SectionTitle>How to help</SectionTitle>
-        <SectionContent>
+          <h2>How to help</h2>
           <p>
             If you can help out, let us know by hitting the{' '}
             <strong>I can help</strong> button on any of the unfilled volunteer
             roles below.
           </p>
-
-          {future.map(ev => {
-            const date = new Date(`${ev.local_date}T${ev.local_time}+1000`);
-            return (
-              <div key={ev.id}>
-                <h4>{format(date, 'MMMM d, yyyy')}</h4>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Role</th>
-                      <td></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Buy the ice</td>
-                      <td>
-                        <em>role filled</em>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Setup</td>
-                      <td>
-                        <Button>I can help</Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Packup</td>
-                      <td>
-                        <Button>I can help</Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Event photography</td>
-                      <td>
-                        <Button>I can help</Button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            );
-          })}
         </SectionContent>
       </Section>
+
+      {future.map(ev => {
+        const date = new Date(`${ev.local_date}T${ev.local_time}+1000`);
+        return (
+          <Section key={ev.id}>
+            <SectionTitle>{format(date, 'MMMM yyyy')}</SectionTitle>
+            <SectionContent>
+              <p>{ev.name}</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <td></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Buy the ice</td>
+                    <td>
+                      <em>role filled</em>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Setup</td>
+                    <td>
+                      <Button>I can help</Button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Packup</td>
+                    <td>
+                      <Button>I can help</Button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Event photography</td>
+                    <td>
+                      <Button>I can help</Button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </SectionContent>
+          </Section>
+        );
+      })}
     </div>
   );
 };
