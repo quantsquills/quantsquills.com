@@ -1,10 +1,10 @@
 {
-  "name": "gatsby-starter-blog",
-  "description": "Starter Gatsby Blog",
+  "name": "quants-and-quills",
+  "description": "Quants and Quills website",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Simon Elvery<simon@elvery.net>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby-starter-blog/issues"
+    "url": "https://github.com/quantsquills/quantsquills.com/issues"
   },
   "dependencies": {
     "date-fns": "^2.9.0",
@@ -44,10 +44,9 @@
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-plugin-react": "^7.16.0",
-    "gh-pages": "^2.1.1",
     "prettier": "^1.18.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://quantsquills.com",
   "keywords": [
     "gatsby"
   ],
@@ -55,7 +54,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/quantsquills/quantsquills.com.git"
   },
   "scripts": {
     "start": "gatsby develop",
