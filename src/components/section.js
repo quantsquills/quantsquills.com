@@ -75,3 +75,14 @@ export const SiteTitle = () => {
     </TitleLink>
   );
 };
+
+export const Button = styled.button`
+  border-radius: 0.3rem;
+  padding: 0.2rem 0.4rem;
+  text-decoration: none;
+  background: rgb(28, 160, 134);
+  color: #fff;
+  text-shadow: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  border: none;
+`;

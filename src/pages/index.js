@@ -9,7 +9,6 @@ import styles from './index.module.scss';
 import logo from '../assets/quants-quills-logo.svg';
 
 export const HomepageTemplate = props => {
-  console.log('props', props);
   const { siteTitle, siteDescription } = props.data.site.siteMetadata;
   const location = props.location;
   const { events, next_event } = props.data.meetupGroup;

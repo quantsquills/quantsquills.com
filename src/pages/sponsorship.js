@@ -9,6 +9,7 @@ import {
   SectionTitle,
   SectionContent,
   StandFirst,
+  Button,
 } from '../components/section.js';
 
 export const HomepageTemplate = props => {
@@ -75,14 +76,25 @@ export const HomepageTemplate = props => {
               <tr>
                 <th>Interstate speaker</th>
                 <td>
-                  <a href="" className={styles.button}>
-                    Get in touch
-                  </a>{' '}
-                  ~$500
+                  <Button>Get in touch</Button> ~$500
                 </td>
               </tr>
             </tbody>
           </table>
+        </SectionContent>
+      </Section>
+      <Section>
+        <SectionTitle>Classified Ads</SectionTitle>
+        <SectionContent>
+          <p>
+            Running a commercial event you think our audience might like? Have a
+            neat product which fills some need?
+          </p>
+          <p>
+            A classifed ad slot in our newsletter is a cheap way to get out the
+            word.
+          </p>
+          <Button>Book a classified ad</Button>
         </SectionContent>
       </Section>
       <Section>
@@ -93,46 +105,41 @@ export const HomepageTemplate = props => {
             serves a mix of ...
           </p>
           <p>Book a sponsorship slot below for $100.</p>
+
+          <p>
+            <em>Display format of sponsorship here ... </em>
+          </p>
+
           <table>
             <tbody>
               <tr>
                 <th>February 2020</th>
                 <td>
-                  <a href="" className={styles.button}>
-                    Get in touch
-                  </a>
+                  <Button>Get in touch</Button>
                 </td>
               </tr>
               <tr>
                 <th>March 2020</th>
                 <td>
-                  <a href="" className={styles.button}>
-                    Get in touch
-                  </a>
+                  <Button>Get in touch</Button>
                 </td>
               </tr>
               <tr>
                 <th>April 2020</th>
                 <td>
-                  <a href="" className={styles.button}>
-                    Get in touch
-                  </a>
+                  <Button>Get in touch</Button>
                 </td>
               </tr>
               <tr>
                 <th>May 2020</th>
                 <td>
-                  <a href="" className={styles.button}>
-                    Get in touch
-                  </a>
+                  <Button>Get in touch</Button>
                 </td>
               </tr>
               <tr>
                 <th>June 2020</th>
                 <td>
-                  <a href="" className={styles.button}>
-                    Get in touch
-                  </a>
+                  <Button>Get in touch</Button>
                 </td>
               </tr>
             </tbody>
