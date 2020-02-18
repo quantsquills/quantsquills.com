@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "date-fns": "^2.9.0",
-    "gatsby": "^2.19.12",
-    "gatsby-image": "^2.2.29",
+    "gatsby": "^2.19.18",
+    "gatsby-image": "^2.2.41",
     "gatsby-plugin-feed": "^2.3.18",
     "gatsby-plugin-google-analytics": "^2.1.23",
     "gatsby-plugin-manifest": "^2.2.23",
@@ -25,8 +25,10 @@
     "gatsby-remark-smartypants": "^2.1.14",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-source-meetup": "^1.0.0",
-    "gatsby-transformer-remark": "^2.6.30",
+    "gatsby-transformer-remark": "^2.6.52",
     "gatsby-transformer-sharp": "^2.2.23",
+    "google-auth-library": "^5.9.2",
+    "googleapis": "^47.0.0",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
     "prismjs": "^1.17.1",
@@ -44,6 +46,7 @@
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-plugin-react": "^7.16.0",
+    "netlify-cli": "^2.32.0",
     "prettier": "^1.18.2"
   },
   "homepage": "https://quantsquills.com",
@@ -58,7 +61,7 @@
   },
   "scripts": {
     "start": "gatsby develop",
-    "dev": "gatsby develop",
+    "dev": "netlify dev",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
