@@ -80,7 +80,6 @@ module.exports = {
           {
             status: `upcoming`,
             desc: `true`,
-            page: 6,
           },
           {
             status: `past`,
