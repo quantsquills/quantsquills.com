@@ -6,3 +6,5 @@ public
 .cache/
 yarn.lock
 .envrc
+# Local Netlify folder
+.netlify
