@@ -1,0 +1,5 @@
+- id: setup
+  name: Setup
+  description: A longer description of what setup involves.
+- id: ice
+  name: Buy the ice

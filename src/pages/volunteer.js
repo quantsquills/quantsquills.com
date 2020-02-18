@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Modal from 'react-modal';
 import { Link, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import { format } from 'date-fns';
@@ -11,13 +12,73 @@ import {
   Button,
 } from '../components/section.js';
 
+import { VolunteerForm } from '../components/volunteer.js';
+
+const modalStyles = {
+  content: {
+    maxWidth: '40rem',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+Modal.setAppElement('#___gatsby');
+
+async function fetchRosterData() {
+  const res = await fetch('/.netlify/functions/volunteer');
+  return res.json();
+}
+
+async function addRosterData({ meetup, role, name, contact }) {
+  const res = await fetch(
+    `/.netlify/functions/volunteer?name=${encodeURIComponent(
+      name
+    )}&contact=${encodeURIComponent(contact)}&meetup=${encodeURIComponent(
+      meetup
+    )}&role=${encodeURIComponent(role)}`,
+    { method: 'POST' }
+  );
+  return res.json();
+}
+
 export const Volunteer = props => {
   const { siteTitle, siteDescription } = props.data.site.siteMetadata;
   const location = props.location;
   const { events, next_event } = props.data.meetupGroup;
-  const meetup = events.find(e => e.meetupId === next_event.id);
-  const future = events.filter(e => e.status === 'upcoming').reverse();
-  console.log(future);
+  const future = events
+    .filter(e => e.status === 'upcoming')
+    .reverse()
+    .slice(0, 6);
+
+  const volunteerRoles = props.data.allVolunteerRolesYaml.edges;
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [rosterData, setRosterData] = useState(null);
+  const [meetup, setMeetup] = useState(null);
+  const [role, setRole] = useState(null);
+
+  // Load the spreadsheet data
+  useEffect(() => fetchRosterData().then(setRosterData), []);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function getVolunteer(eventId, roleId) {
+    console.log('rosterData', rosterData);
+    return rosterData === null
+      ? null
+      : rosterData.find(d => d[0] === eventId && d[1] === roleId);
+  }
+
   return (
     <div>
       <Helmet
@@ -26,6 +87,25 @@ export const Volunteer = props => {
         title={siteTitle}
       />
 
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={modalStyles}
+        contentLabel="Volunteer"
+      >
+        <VolunteerForm
+          meetup={meetup}
+          role={role}
+          onSubmit={async data => {
+            const newRoster = await addRosterData(
+              Object.assign({}, data, { meetup: meetup.dateId, role: role.id })
+            );
+            closeModal();
+            setRosterData(newRoster);
+          }}
+        />
+      </Modal>
+
       <Section>
         <SectionTitle>
           <SiteTitle />
@@ -33,7 +113,8 @@ export const Volunteer = props => {
         <SectionContent>
           <h1>Volunteering</h1>
           <StandFirst>
-            Thanks for being part of the Hacks/Hackers Brisbane community!
+            Thanks for being part of the <strong>Hacks/Hackers Brisbane</strong>{' '}
+            community!
           </StandFirst>
           <p>
             Each event that we put on takes a considerable amount of work and
@@ -52,11 +133,17 @@ export const Volunteer = props => {
 
       {future.map(ev => {
         const date = new Date(`${ev.local_date}T${ev.local_time}+1000`);
+        const meetup = Object.assign(
+          {},
+          ev,
+          { date },
+          { dateId: format(date, 'yyyy-MM') }
+        );
         return (
-          <Section key={ev.id}>
-            <SectionTitle>{format(date, 'MMMM yyyy')}</SectionTitle>
+          <Section key={meetup.id}>
+            <SectionTitle>{format(meetup.date, 'MMMM yyyy')}</SectionTitle>
             <SectionContent>
-              <p>{ev.name}</p>
+              <p>{meetup.name}</p>
               <table>
                 <thead>
                   <tr>
@@ -65,30 +152,40 @@ export const Volunteer = props => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Buy the ice</td>
-                    <td>
-                      <em>role filled</em>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Setup</td>
-                    <td>
-                      <Button>I can help</Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Packup</td>
-                    <td>
-                      <Button>I can help</Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Event photography</td>
-                    <td>
-                      <Button>I can help</Button>
-                    </td>
-                  </tr>
+                  {volunteerRoles.map(({ node }) => {
+                    const role = node;
+                    const volunteer = getVolunteer(meetup.dateId, role.id);
+                    return (
+                      <tr key={role.id}>
+                        <td>
+                          {role.name}
+                          {role.description ? (
+                            <>
+                              <br />
+                              <small>{role.description}</small>
+                            </>
+                          ) : null}
+                        </td>
+                        <td>
+                          <em>
+                            {volunteer ? (
+                              volunteer[2]
+                            ) : (
+                              <Button
+                                onClick={() => {
+                                  setMeetup(meetup);
+                                  setRole(role);
+                                  openModal();
+                                }}
+                              >
+                                I can help!
+                              </Button>
+                            )}
+                          </em>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </SectionContent>
@@ -109,17 +206,12 @@ export const pageQuery = graphql`
         description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allVolunteerRolesYaml {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
-          }
+          id
+          description
+          name
         }
       }
     }

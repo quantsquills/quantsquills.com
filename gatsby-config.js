@@ -7,11 +7,20 @@ module.exports = {
   pathPrefix: '/',
   plugins: [
     'gatsby-plugin-sass',
+    'gatsby-transformer-yaml',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content`,
         name: 'content',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/data/`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
