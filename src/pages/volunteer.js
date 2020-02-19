@@ -73,7 +73,6 @@ export const Volunteer = props => {
   }
 
   function getVolunteer(eventId, roleId) {
-    console.log('rosterData', rosterData);
     return rosterData === null
       ? null
       : rosterData.find(d => d[0] === eventId && d[1] === roleId);
