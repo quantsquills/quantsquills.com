@@ -9,6 +9,12 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-transformer-yaml',
     {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        whitelist: ['BUGSNAG_ID'],
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content`,

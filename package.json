@@ -7,9 +7,12 @@
     "url": "https://github.com/quantsquills/quantsquills.com/issues"
   },
   "dependencies": {
+    "@bugsnag/js": "^6.5.2",
+    "@bugsnag/plugin-react": "^6.5.0",
     "date-fns": "^2.9.0",
     "gatsby": "^2.19.18",
     "gatsby-image": "^2.2.41",
+    "gatsby-plugin-env-variables": "^1.0.1",
     "gatsby-plugin-feed": "^2.3.18",
     "gatsby-plugin-google-analytics": "^2.1.23",
     "gatsby-plugin-manifest": "^2.2.23",
