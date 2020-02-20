@@ -9,8 +9,9 @@ import {
   SectionTitle,
   SectionContent,
   StandFirst,
-  Button,
 } from '../components/section.js';
+
+import { Button } from '../components/shared';
 
 import { VolunteerForm } from '../components/volunteer.js';
 
@@ -60,15 +61,19 @@ export const Volunteer = props => {
   const [rosterData, setRosterData] = useState(null);
   const [meetup, setMeetup] = useState(null);
   const [role, setRole] = useState(null);
+  const [volunteerFormError, setVolunteerFormError] = useState(null);
 
   // Load the spreadsheet data
-  useEffect(() => fetchRosterData().then(setRosterData), []);
+  useEffect(() => {
+    fetchRosterData().then(setRosterData);
+  }, []);
 
   function openModal() {
     setIsOpen(true);
   }
 
   function closeModal() {
+    setVolunteerFormError(null);
     setIsOpen(false);
   }
 
@@ -95,10 +100,23 @@ export const Volunteer = props => {
         <VolunteerForm
           meetup={meetup}
           role={role}
-          onSubmit={async data => {
-            const newRoster = await addRosterData(
-              Object.assign({}, data, { meetup: meetup.dateId, role: role.id })
-            );
+          error={volunteerFormError}
+          onSubmit={async ({ name, contact }) => {
+            setVolunteerFormError(null);
+            let newRoster;
+            try {
+              newRoster = await addRosterData({
+                name: name.value,
+                contact: contact.value,
+                meetup: meetup.dateId,
+                role: role.id,
+              });
+            } catch (e) {
+              return setVolunteerFormError(
+                'Sorry, there was an error saving your details, please try again.'
+              );
+            }
+
             closeModal();
             setRosterData(newRoster);
           }}
@@ -139,7 +157,7 @@ export const Volunteer = props => {
           { dateId: format(date, 'yyyy-MM') }
         );
         return (
-          <Section key={meetup.id}>
+          <Section key={meetup.meetupId}>
             <SectionTitle>{format(meetup.date, 'MMMM yyyy')}</SectionTitle>
             <SectionContent>
               <p>{meetup.name}</p>
@@ -210,6 +228,7 @@ export const pageQuery = graphql`
         node {
           id
           description
+          sentence
           name
         }
       }

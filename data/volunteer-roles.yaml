@@ -1,5 +1,7 @@
 - id: setup
   name: Setup
+  sentence: setup the venue
   description: A longer description of what setup involves.
 - id: ice
   name: Buy the ice
+  sentence: buy ice

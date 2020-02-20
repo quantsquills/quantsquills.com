@@ -25,20 +25,20 @@ export const HomepageTemplate = props => {
       <main className={styles.hero}>
         Quants &amp; Quills is a not-for-profit, volunteer run organisation
         based in <strong>Brisbane, Australia</strong>. We are exploring the
-        future of media through a{' '}
+        future of media by bringing together technologists and storytellers. We
+        run a{' '}
         <strong>
           free{' '}
           <a href="https://www.meetup.com/Hacks-Hackers-Brisbane/">
             monthly event
           </a>
         </strong>{' '}
-        and{' '}
+        — the local chapter of Hacks/Hackers — and a{' '}
         <strong>
           <a href="https://us20.campaign-archive.com/home/?u=b159620fe75ddd72734247f92&id=298dc804d1">
             newsletter
           </a>
         </strong>{' '}
-        bringing together technologists and storytellers.
       </main>
       <footer className={styles.footer}>
         <img src={logo} alt={`Quants & Quills logo`} className={styles.logo} />
@@ -47,9 +47,9 @@ export const HomepageTemplate = props => {
           or <a href="https://www.facebook.com/HacksHackersBNE">Facebook</a> or
           join the discussion on{' '}
           <a href="https://storieswithdata.community">Slack</a>. Find out about{' '}
-          <Link to="/volunteer">volunteering</Link> at,{' '}
-          <Link to="/sponsorship">sponsoring</Link> or{' '}
-          <Link to="/pitch-a-talk">speaking</Link> at our events.
+          <Link to="/volunteer">volunteering</Link> or{' '}
+          <Link to="/pitch-a-talk">speaking</Link> at a Hacks/Hackers Brisbane
+          event.
         </p>
       </footer>
     </div>

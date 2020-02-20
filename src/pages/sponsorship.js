@@ -9,8 +9,9 @@ import {
   SectionTitle,
   SectionContent,
   StandFirst,
-  Button,
-} from '../components/section.js';
+} from '../components/section';
+
+import { Button } from '../components/shared';
 
 export const HomepageTemplate = props => {
   const { siteTitle, siteDescription } = props.data.site.siteMetadata;
