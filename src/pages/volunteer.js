@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { Link, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import { format } from 'date-fns';
+import { rhythm } from '../utils/typography';
 import {
   SiteTitle,
   Section,
@@ -160,7 +161,10 @@ export const Volunteer = props => {
           <Section key={meetup.meetupId}>
             <SectionTitle>{format(meetup.date, 'MMMM yyyy')}</SectionTitle>
             <SectionContent>
-              <p>{meetup.name}</p>
+              <h4 style={{ marginTop: rhythm(0.1) }}>{meetup.name}</h4>
+              <p>
+                <a href={meetup.link}>Full event details →</a>
+              </p>
               <table>
                 <thead>
                   <tr>

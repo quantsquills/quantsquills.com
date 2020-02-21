@@ -34,8 +34,6 @@ export const VolunteerForm = ({ role, meetup, onSubmit, error }) => {
     onSubmit
   );
 
-  console.log('state', state);
-
   const date = new Date(meetup.local_date);
 
   // Validate fields
