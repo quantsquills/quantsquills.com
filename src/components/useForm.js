@@ -66,6 +66,8 @@ function useForm(stateSchema, validationSchema = {}, callback) {
     [validationSchema]
   );
 
+  const reset = useCallback(() => setState(stateSchema), [stateSchema]);
+
   const handleOnSubmit = useCallback(
     event => {
       event.preventDefault();
@@ -79,7 +81,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
     [state]
   );
 
-  return { state, disable, handleOnChange, handleOnSubmit };
+  return { state, disable, handleOnChange, handleOnSubmit, reset };
 }
 
 export default useForm;

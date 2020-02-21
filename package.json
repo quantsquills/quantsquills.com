@@ -9,6 +9,7 @@
   "dependencies": {
     "@bugsnag/js": "^6.5.2",
     "@bugsnag/plugin-react": "^6.5.0",
+    "@sendgrid/mail": "^6.5.3",
     "date-fns": "^2.9.0",
     "gatsby": "^2.19.18",
     "gatsby-image": "^2.2.41",

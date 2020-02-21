@@ -11,6 +11,8 @@ import {
   Button,
 } from '../components/section.js';
 
+import TalkPitchForm from '../components/TalkPitchForm';
+
 export const Speaking = props => {
   const { siteTitle, siteDescription } = props.data.site.siteMetadata;
   const location = props.location;
@@ -92,7 +94,7 @@ export const Speaking = props => {
         <SectionTitle>What topics?</SectionTitle>
         <SectionContent>
           <p>We've had talks on ...</p>
-          <em>Talk pitch form...</em>
+          <TalkPitchForm />
         </SectionContent>
       </Section>
       <Section>

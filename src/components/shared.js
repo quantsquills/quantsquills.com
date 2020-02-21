@@ -8,7 +8,8 @@ export const FormError = styled.p`
 `;
 
 export const FormFieldError = styled(FormError)`
-  font-size: 0.8rem;
+  font-size: ${rhythm(0.5)};
+  margin-bottom: 0;
 `;
 
 export const FormLabel = styled.label`
