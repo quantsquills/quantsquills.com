@@ -198,6 +198,10 @@ export const Volunteer = props => {
                                   setRole(role);
                                   openModal();
                                 }}
+                                style={{
+                                  display: rosterData ? 'block' : 'none',
+                                  whitespace: 'no-wrap',
+                                }}
                               >
                                 I can help!
                               </Button>
