@@ -78,10 +78,10 @@ export const Volunteer = props => {
     setIsOpen(false);
   }
 
-  function getVolunteer(eventId, roleId) {
+  function getVolunteers(eventId, roleId) {
     return rosterData === null
       ? null
-      : rosterData.find(d => d[0] === eventId && d[1] === roleId);
+      : rosterData.filter(d => d[0] === eventId && d[1] === roleId);
   }
 
   return (
@@ -146,11 +146,12 @@ export const Volunteer = props => {
             <strong>I can help</strong> button on any of the unfilled volunteer
             roles below.
           </p>
+          <p>Events start at 6pm unless noted and usually run for 2-3 hours.</p>
         </SectionContent>
       </Section>
 
       {future.map(ev => {
-        const date = new Date(`${ev.local_date}T${ev.local_time}+1000`);
+        const date = new Date(`${ev.local_date}T${ev.local_time}`);
         const meetup = Object.assign(
           {},
           ev,
@@ -159,7 +160,7 @@ export const Volunteer = props => {
         );
         return (
           <Section key={meetup.meetupId}>
-            <SectionTitle>{format(meetup.date, 'MMMM yyyy')}</SectionTitle>
+            <SectionTitle>{format(meetup.date, 'MMMM dd')}</SectionTitle>
             <SectionContent>
               <h4 style={{ marginTop: rhythm(0.1) }}>{meetup.name}</h4>
               <p>
@@ -169,44 +170,45 @@ export const Volunteer = props => {
                 <thead>
                   <tr>
                     <th>Role</th>
-                    <td></td>
+                    <th>Volunteers</th>
                   </tr>
                 </thead>
                 <tbody>
                   {volunteerRoles.map(({ node }) => {
                     const role = node;
-                    const volunteer = getVolunteer(meetup.dateId, role.id);
+                    const volunteers = getVolunteers(meetup.dateId, role.id);
                     return (
-                      <tr key={role.id}>
+                      <tr key={role.id} style={{ verticalAlign: 'top' }}>
                         <td>
                           {role.name}
+                          {role.count ? ` x ${role.count}` : null}
                           {role.description ? (
-                            <>
+                            <small>
                               <br />
-                              <small>{role.description}</small>
-                            </>
+                              {role.description}
+                            </small>
                           ) : null}
                         </td>
                         <td>
-                          <em>
-                            {volunteer ? (
-                              volunteer[2]
-                            ) : (
-                              <Button
-                                onClick={() => {
-                                  setMeetup(meetup);
-                                  setRole(role);
-                                  openModal();
-                                }}
-                                style={{
-                                  display: rosterData ? 'block' : 'none',
-                                  whitespace: 'no-wrap',
-                                }}
-                              >
-                                I can help!
-                              </Button>
-                            )}
-                          </em>
+                          {volunteers.length > 0 ? (
+                            <p>{volunteers.map(d => d[2]).join(', ')}</p>
+                          ) : null}
+
+                          {volunteers.length < role.count || !role.count ? (
+                            <Button
+                              onClick={() => {
+                                setMeetup(meetup);
+                                setRole(role);
+                                openModal();
+                              }}
+                              style={{
+                                display: rosterData ? 'block' : 'none',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              I can help!
+                            </Button>
+                          ) : null}
                         </td>
                       </tr>
                     );
@@ -238,6 +240,7 @@ export const pageQuery = graphql`
           description
           sentence
           name
+          count
         }
       }
     }
