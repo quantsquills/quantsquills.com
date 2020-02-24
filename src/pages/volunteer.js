@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Link, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import { format } from 'date-fns';
+import { format, add } from 'date-fns';
 import { rhythm } from '../utils/typography';
 import {
   SiteTitle,
@@ -151,12 +151,14 @@ export const Volunteer = props => {
       </Section>
 
       {future.map(ev => {
-        const date = new Date(`${ev.local_date}T${ev.local_time}`);
+        const date = add(new Date(ev.time), { seconds: ev.utc_offset / 1000 });
         const meetup = Object.assign(
           {},
           ev,
           { date },
-          { dateId: format(date, 'yyyy-MM') }
+          {
+            dateId: format(date, 'yyyy-MM'),
+          }
         );
         return (
           <Section key={meetup.meetupId}>
@@ -253,8 +255,8 @@ export const pageQuery = graphql`
       events {
         name
         status
-        local_date
-        local_time
+        time
+        utc_offset
         link
         meetupId
         yes_rsvp_count
