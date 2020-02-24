@@ -91,9 +91,8 @@ export const Speaking = props => {
         </SectionContent>
       </Section>
       <Section>
-        <SectionTitle>What topics?</SectionTitle>
+        <SectionTitle>Pitch it</SectionTitle>
         <SectionContent>
-          <p>We've had talks on ...</p>
           <TalkPitchForm />
         </SectionContent>
       </Section>
