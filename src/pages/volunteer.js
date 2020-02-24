@@ -190,11 +190,13 @@ export const Volunteer = props => {
                           ) : null}
                         </td>
                         <td>
-                          {volunteers.length > 0 ? (
+                          {volunteers && volunteers.length > 0 ? (
                             <p>{volunteers.map(d => d[2]).join(', ')}</p>
                           ) : null}
 
-                          {volunteers.length < role.count || !role.count ? (
+                          {!volunteers ||
+                          volunteers.length < role.count ||
+                          !role.count ? (
                             <Button
                               onClick={() => {
                                 setMeetup(meetup);
