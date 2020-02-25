@@ -34,16 +34,13 @@ export const VolunteerForm = ({ role, meetup, onSubmit, error }) => {
     onSubmit
   );
 
-  const date = new Date(meetup.local_date);
-
-  // Validate fields
   return (
     <>
       <h2>Thanks for offering to help!</h2>
       <p>
         Throw your name and contact details in here to let us know you can help{' '}
         <strong>{role.sentence}</strong> for the <strong>{meetup.name}</strong>{' '}
-        event on <strong>{format(date, 'd MMM yyyy')}</strong>.
+        event on <strong>{format(meetup.date, 'd MMM yyyy')}</strong>.
       </p>
       {error ? <FormError>{error}</FormError> : null}
       <form onSubmit={handleOnSubmit}>
@@ -77,4 +74,14 @@ export const VolunteerForm = ({ role, meetup, onSubmit, error }) => {
       </p>
     </>
   );
+};
+
+VolunteerForm.propTypes = {
+  role: PropTypes.shape({ sentence: PropTypes.string }),
+  meetup: PropTypes.shape({
+    name: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
+  }),
+  onSubmit: PropTypes.func,
+  error: PropTypes.string,
 };

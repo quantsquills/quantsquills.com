@@ -152,14 +152,10 @@ export const Volunteer = props => {
 
       {future.map(ev => {
         const date = add(new Date(ev.time), { seconds: ev.utc_offset / 1000 });
-        const meetup = Object.assign(
-          {},
-          ev,
-          { date },
-          {
-            dateId: format(date, 'yyyy-MM'),
-          }
-        );
+        const meetup = Object.assign({}, ev, {
+          date,
+          dateId: format(date, 'yyyy-MM-dd'),
+        });
         return (
           <Section key={meetup.meetupId}>
             <SectionTitle>{format(meetup.date, 'MMMM dd')}</SectionTitle>
