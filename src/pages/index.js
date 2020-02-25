@@ -9,7 +9,7 @@ import styles from './index.module.scss';
 import logo from '../assets/quants-quills-logo.svg';
 
 export const HomepageTemplate = props => {
-  const { siteTitle, siteDescription } = props.data.site.siteMetadata;
+  const { title, siteDescription } = props.data.site.siteMetadata;
   const location = props.location;
   const { events, next_event } = props.data.meetupGroup;
   const meetup = events.find(e => e.meetupId === next_event.id);
@@ -19,7 +19,7 @@ export const HomepageTemplate = props => {
       <Helmet
         htmlAttributes={{ lang: 'en' }}
         meta={[{ name: 'description', content: siteDescription }]}
-        title={siteTitle}
+        title={title}
       />
 
       <main className={styles.hero}>
