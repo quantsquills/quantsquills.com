@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { format } from 'date-fns';
+import { format } from 'date-fns-tz';
 import useForm from './useForm';
 
 import {
@@ -40,7 +40,12 @@ export const VolunteerForm = ({ role, meetup, onSubmit, error }) => {
       <p>
         Throw your name and contact details in here to let us know you can help{' '}
         <strong>{role.sentence}</strong> for the <strong>{meetup.name}</strong>{' '}
-        event on <strong>{format(meetup.date, 'd MMM yyyy')}</strong>.
+        event on{' '}
+        <strong>
+          {format(meetup.date, 'd MMM yyyy, h:mm')}
+          {format(meetup.date, 'a').toLowerCase()}
+        </strong>
+        .
       </p>
       {error ? <FormError>{error}</FormError> : null}
       <form onSubmit={handleOnSubmit}>

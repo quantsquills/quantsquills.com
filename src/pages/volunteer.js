@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Link, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import { format, add } from 'date-fns';
+import { format, utcToZonedTime } from 'date-fns-tz';
 import { rhythm } from '../utils/typography';
 import {
   SiteTitle,
@@ -50,11 +50,12 @@ async function addRosterData({ meetup, role, name, contact }) {
 export const Volunteer = props => {
   const { siteTitle, siteDescription } = props.data.site.siteMetadata;
   const location = props.location;
-  const { events, next_event } = props.data.meetupGroup;
+  const { events } = props.data.meetupGroup;
+  const now = Date.now();
   const future = events
-    .filter(e => e.status === 'upcoming')
-    .reverse()
-    .slice(0, 6);
+    .filter(e => e.time > now) // Only future events here
+    .reverse() // Put them in chronological order
+    .slice(0, 6); // Show six at the most.
 
   const volunteerRoles = props.data.allVolunteerRolesYaml.edges;
 
@@ -151,7 +152,8 @@ export const Volunteer = props => {
       </Section>
 
       {future.map(ev => {
-        const date = add(new Date(ev.time), { seconds: ev.utc_offset / 1000 });
+        const timeZone = 'Australia/Brisbane';
+        const date = utcToZonedTime(ev.time, timeZone);
         const meetup = Object.assign({}, ev, {
           date,
           dateId: format(date, 'yyyy-MM-dd'),
@@ -245,14 +247,10 @@ export const pageQuery = graphql`
       }
     }
     meetupGroup {
-      next_event {
-        id
-      }
       events {
         name
         status
         time
-        utc_offset
         link
         meetupId
         yes_rsvp_count

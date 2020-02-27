@@ -11,6 +11,7 @@
     "@bugsnag/plugin-react": "^6.5.0",
     "@sendgrid/mail": "^6.5.3",
     "date-fns": "^2.9.0",
+    "date-fns-tz": "^1.0.10",
     "gatsby": "^2.19.18",
     "gatsby-image": "^2.2.41",
     "gatsby-plugin-env-variables": "^1.0.1",
