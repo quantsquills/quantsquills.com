@@ -159,7 +159,7 @@ export const Volunteer = props => {
           dateId: format(date, 'yyyy-MM-dd'),
         });
         return (
-          <Section key={meetup.meetupId}>
+          <Section key={meetup.meetupId} id={meetup.dateId}>
             <SectionTitle>{format(meetup.date, 'MMMM dd')}</SectionTitle>
             <SectionContent>
               <h4 style={{ marginTop: rhythm(0.1) }}>{meetup.name}</h4>
