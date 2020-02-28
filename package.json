@@ -42,7 +42,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
-    "react-modal": "^3.11.1",
+    "react-modal": "^3.11.2",
     "react-typography": "^0.16.19",
     "styled-components": "^5.0.1",
     "typeface-merriweather": "0.0.43",
