@@ -30,7 +30,7 @@
     "gatsby-remark-smartypants": "^2.1.14",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-source-meetup": "^1.0.0",
-    "gatsby-transformer-remark": "^2.6.52",
+    "gatsby-transformer-remark": "^2.7.3",
     "gatsby-transformer-sharp": "^2.3.16",
     "gatsby-transformer-yaml": "^2.2.25",
     "google-auth-library": "^5.10.1",
