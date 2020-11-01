@@ -1,19 +1,12 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Event from '../components/event';
-
-import Layout from '../components/layout';
-import { rhythm } from '../utils/typography';
 import styles from './index.module.scss';
 import logo from '../assets/quants-quills-logo.svg';
 
 export const HomepageTemplate = props => {
   const { title, siteDescription } = props.data.site.siteMetadata;
-  const location = props.location;
-  const { events, next_event } = props.data.meetupGroup;
-  const meetup = events.find(e => e.meetupId === next_event.id);
-
+  
   return (
     <div className={styles.container}>
       <Helmet
@@ -81,9 +74,6 @@ export const pageQuery = graphql`
       }
     }
     meetupGroup {
-      next_event {
-        id
-      }
       events {
         name
         status

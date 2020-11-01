@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 
 import {
@@ -8,17 +8,13 @@ import {
   SectionTitle,
   SectionContent,
   StandFirst,
-  Button,
 } from '../components/section.js';
 
 import TalkPitchForm from '../components/TalkPitchForm';
 
 export const Speaking = props => {
   const { siteTitle, siteDescription } = props.data.site.siteMetadata;
-  const location = props.location;
-  const { events, next_event } = props.data.meetupGroup;
-  const meetup = events.find(e => e.meetupId === next_event.id);
-
+  
   return (
     <div>
       <Helmet
@@ -139,9 +135,6 @@ export const pageQuery = graphql`
       }
     }
     meetupGroup {
-      next_event {
-        id
-      }
       events {
         name
         status
