@@ -6,7 +6,7 @@ import logo from '../assets/quants-quills-logo.svg';
 
 export const HomepageTemplate = props => {
   const { title, siteDescription } = props.data.site.siteMetadata;
-  
+
   return (
     <div className={styles.container}>
       <Helmet
@@ -21,16 +21,11 @@ export const HomepageTemplate = props => {
         future of media by bringing together technologists and storytellers. We
         run a{' '}
         <strong>
-          free{' '}
-          <a href="https://www.meetup.com/Hacks-Hackers-Brisbane/">
-            monthly event
-          </a>
+          free <a href="/hacks-hackers-brisbane">monthly event</a>
         </strong>{' '}
         — the local chapter of Hacks/Hackers — and a{' '}
         <strong>
-          <a href="https://us20.campaign-archive.com/home/?u=b159620fe75ddd72734247f92&id=298dc804d1">
-            newsletter
-          </a>
+          <a href="/newsletter">newsletter</a>
         </strong>{' '}
       </main>
       <footer className={styles.footer}>
