@@ -15,7 +15,7 @@
 	</a>
 	<nav>
 		<ul>
-			<li><a href="/events">Events</a></li>
+			<li><a href="/hacks-hackers-brisbane">Events</a></li>
 			<li><a href="/volunteer">Volunteer</a></li>
 			<li><a href="/pitch-a-talk">Speak</a></li>
 		</ul>
