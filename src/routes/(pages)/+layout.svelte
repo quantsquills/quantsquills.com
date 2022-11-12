@@ -3,8 +3,6 @@
 </script>
 
 <div class="container m-4 mx-auto px-4 max-w-2xl">
-	<header>
-		<SiteTitle />
-	</header>
+	<SiteTitle />
 	<slot />
 </div>
