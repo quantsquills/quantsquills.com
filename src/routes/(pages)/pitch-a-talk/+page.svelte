@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
 	import TalkPitchForm from '$lib/TalkPitchForm.svelte';
 	import PageHeader from '$lib/PageHeader.svelte';
 	import SectionTitle from '$lib/SectionTitle.svelte';
 	import PageBody from '$lib/PageBody.svelte';
+	import type { ActionData } from './$types';
+	export let form: ActionData;
 </script>
 
 <PageHeader>
@@ -60,10 +62,6 @@
 			</a> (we should be so lucky).
 		</p>
 	</div>
-	<SectionTitle>Pitch it</SectionTitle>
-	<div>
-		<TalkPitchForm />
-	</div>
 	<SectionTitle>Is it just talks?</SectionTitle>
 	<div>
 		<p
@@ -75,5 +73,15 @@
 				>get in touch</a
 			>.
 		</p>
+	</div>
+	<SectionTitle>Pitch it</SectionTitle>
+	<div>
+		<p
+			>We'd love to hear from you if you want to <strong>pitch a talk</strong>
+			or <strong>suggest a speaker</strong>. You can
+			<a
+				href="mailto:hello@quantsquills.com?subject=Hacks%2FHackers%20talk%20pitch"
+				>email us</a> to get the ball rolling and we'll get back to you as soon as
+			we can.</p>
 	</div>
 </PageBody>
