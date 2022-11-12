@@ -28,10 +28,13 @@
 			alt="Quants & Quills logo"
 			class="logo" />
 		<p>
-			Follow us on <a href="https://twitter.com/HacksHackersBNE">Twitter</a
-			>{' '}
-			or <a href="https://www.facebook.com/HacksHackersBNE">Facebook</a> or join
-			the discussion on{' '}
+			Find us on the <a rel="me" href="https://bne.social/@hackshackers"
+				>Fediverse</a
+			>,
+			<a rel="me" href="https://twitter.com/HacksHackersBNE">Twitter</a>{' '}
+			or
+			<a rel="me" href="https://www.facebook.com/HacksHackersBNE">Facebook</a>
+			or join the discussion on{' '}
 			<a href="https://storieswithdata.community">Slack</a>. Find out about{' '}
 			<a href="/volunteer">volunteering</a> or{' '}
 			<a href="/pitch-a-talk">speaking</a> at a Hacks/Hackers Brisbane event.
