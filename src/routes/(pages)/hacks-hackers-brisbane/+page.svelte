@@ -19,31 +19,13 @@
 		][month];
 </script>
 
-{#each data.events as { node: { title, eventUrl, dateTime, description, venue } }}
-	<div class="md:pl-48">
-		<header>
-			<h1>{title}</h1>
-			<div class="md:float-left md:-ml-48 md:w-40 meta">
-				<time datetime={dateTime.toISOString()}
-					>{dateTime.getDate()}
-					{getMonthString(dateTime.getMonth())}
-					{dateTime.getFullYear()}
-				</time>
-				<p>{!!venue.address ? venue.address : venue.name}</p>
-				<a
-					class="md:w-full inline-block px-4 py-2 mb-4 no-underline bg-slate-600 hover:bg-slate-900 transition-colors text-white no-border shadow-none text-center no-border"
-					href={eventUrl}>RSVP</a>
-			</div>
-		</header>
-
-		{@html micromark(description)}
-	</div>
-	<hr />
-{/each}
+<iframe
+	title="RSVP for our next event"
+	id="iframe-container"
+	src="https://events.humanitix.com/event-listings?w=true&u=LOhAYQGhQWggJrrUsxhJfUdBxKp1&o=all&bc=%23353337&bt=RSVP%20Here&tc=%23FFFFFF"
+	width="100%"
+	height="600px"
+	frameborder="0" />
 
 <style>
-	.meta a {
-		text-shadow: none;
-		background-image: none;
-	}
 </style>
