@@ -19,6 +19,7 @@
 		][month];
 </script>
 
+<h1>Upcoming events</h1>
 <iframe
 	title="RSVP for our next event"
 	id="iframe-container"
