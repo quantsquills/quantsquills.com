@@ -33,7 +33,8 @@
 			>,
 			<a rel="me" href="https://twitter.com/HacksHackersBNE">Twitter</a>{' '}
 			or
-			<a rel="me" href="https://www.facebook.com/HacksHackersBNE">Facebook</a>
+			<a rel="me" href="https://www.linkedin.com/company/quants-and-quills/"
+				>LinkedIn</a>
 			or join the discussion on{' '}
 			<a href="https://storieswithdata.community">Slack</a>. Find out about{' '}
 			<a href="/volunteer">volunteering</a> or{' '}
