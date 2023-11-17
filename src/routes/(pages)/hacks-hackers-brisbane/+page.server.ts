@@ -1,10 +1,17 @@
+import {
+  addEvent,
+  addPresentations,
+  addSpeakers,
+  getEvents,
+  getPresentations
+} from '$lib/airtable';
 import type { PageServerLoad } from './$types';
 import { z } from 'zod';
 
 export const load: PageServerLoad = async () => {
-	// TODO: Move this to an API route so we can request on front end too. Use front-end back-end missmatch to trigger a rebuild
-	const variables = { urlname: 'hacks-hackers-brisbane' };
-	const query = `
+  // TODO: Move this to an API route so we can request on front end too. Use front-end back-end missmatch to trigger a rebuild
+  const variables = { urlname: 'hacks-hackers-brisbane' };
+  const query = `
 		query($urlname: String!) {
 			groupByUrlname(urlname: $urlname) {
 				id
@@ -35,40 +42,56 @@ export const load: PageServerLoad = async () => {
 		}
 	`;
 
-	const response = await fetch('https://api.meetup.com/gql', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ query, variables })
-	});
+  const response = await fetch('https://api.meetup.com/gql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, variables })
+  });
 
-	const MeetupDataSchema = z.array(
-		z.object({
-			node: z.object({
-				id: z.string(),
-				title: z.string(),
-				description: z.string(),
-				eventUrl: z.string().url(),
-				shortDescription: z.string().nullable(),
-				dateTime: z.preprocess((arg) => {
-					if (typeof arg === 'string' || arg instanceof Date)
-						return new Date(arg);
-				}, z.date()),
-				venue: z.object({
-					name: z.string(),
-					address: z.string(),
-					city: z.string(),
-					state: z.string(),
-					postalCode: z.string(),
-					country: z.string(),
-					lat: z.number(),
-					lng: z.number()
-				})
-			})
-		})
-	);
+  const MeetupDataSchema = z.array(
+    z.object({
+      node: z.object({
+        id: z.string(),
+        title: z.string(),
+        description: z.string(),
+        eventUrl: z.string().url(),
+        shortDescription: z.string().nullable(),
+        dateTime: z.preprocess((arg) => {
+          if (typeof arg === 'string' || arg instanceof Date)
+            return new Date(arg);
+        }, z.date()),
+        venue: z.object({
+          name: z.string(),
+          address: z.string(),
+          city: z.string(),
+          state: z.string(),
+          postalCode: z.string(),
+          country: z.string(),
+          lat: z.number(),
+          lng: z.number()
+        })
+      })
+    })
+  );
 
-	const { data } = await response.json();
-	return {
-		events: MeetupDataSchema.parse(data.groupByUrlname.upcomingEvents.edges)
-	};
+  const { data } = await response.json();
+
+  const upcomingEvents = MeetupDataSchema.parse(
+    data.groupByUrlname.upcomingEvents.edges
+  );
+
+  const allEvents = await Promise.all(
+    (await addPresentations(await getEvents())).map(async (d) => {
+      return {
+        ...d,
+        presentationsObj: d.presentationsObj
+          ? await addSpeakers(d.presentationsObj || [])
+          : undefined
+      };
+    })
+  );
+
+  return {
+    allEvents
+  };
 };
