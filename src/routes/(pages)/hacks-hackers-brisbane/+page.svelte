@@ -22,9 +22,6 @@
       >{(nextEvent.presentationsObj || []).length > 1
         ? nextEvent.title
         : nextEvent.presentationsObj?.[0].title}</h1>
-    {#if nextEvent.hero_image?.[0]}
-      <img src={nextEvent.hero_image[0].url} />
-    {/if}
     <div class="event-details">
       <time
         >{format(
