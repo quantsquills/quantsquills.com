@@ -53,7 +53,7 @@
 <h2>Past events</h2>
 <PageBody>
   {#each pastEvents as event}
-    <SectionTitle>{event.title}</SectionTitle>
+    <SectionTitle>{format(new Date(event.date), 'MMMM yyyy')}</SectionTitle>
     {#if event.presentationsObj}
       {#each event.presentationsObj as presentation}
         {#if presentation}
