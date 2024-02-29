@@ -1,41 +1,41 @@
 {
-	"name": "quantsquills.com",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"test": "playwright test",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check .",
-		"format": "prettier --write ."
-	},
-	"devDependencies": {
-		"@playwright/test": "^1.25.0",
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.20.4",
-		"@tailwindcss/typography": "^0.5.7",
-		"autoprefixer": "^10.4.7",
-		"date-fns": "^2.30.0",
-		"micromark": "^4.0.0",
-		"postcss": "^8.4.14",
-		"postcss-load-config": "^4.0.1",
-		"prettier": "^3.0.2",
-		"prettier-plugin-svelte": "^3.0.3",
-		"sass": "^1.56.1",
-		"svelte": "^4.0.0",
-		"svelte-check": "^3.4.3",
-		"svelte-preprocess": "^5.0.3",
-		"tailwindcss": "^3.1.5",
-		"tslib": "^2.3.1",
-		"typescript": "^5.0.4",
-		"vite": "^4.3.1",
-		"zod": "^3.19.1"
-	},
-	"type": "module",
-	"dependencies": {
-		"airtable": "^0.12.2"
-	}
+  "name": "quantsquills.com",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "playwright test",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.25.0",
+    "@sveltejs/adapter-auto": "^2.1.1",
+    "@sveltejs/kit": "^2.5.2",
+    "@tailwindcss/typography": "^0.5.7",
+    "autoprefixer": "^10.4.7",
+    "date-fns": "^3.3.1",
+    "micromark": "^4.0.0",
+    "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.1",
+    "prettier": "^3.0.2",
+    "prettier-plugin-svelte": "^3.0.3",
+    "sass": "^1.56.1",
+    "svelte": "^4.0.0",
+    "svelte-check": "^3.4.3",
+    "svelte-preprocess": "^5.0.3",
+    "tailwindcss": "^3.1.5",
+    "tslib": "^2.3.1",
+    "typescript": "^5.0.4",
+    "vite": "^5.1.4",
+    "zod": "^3.19.1"
+  },
+  "type": "module",
+  "dependencies": {
+    "airtable": "^0.12.2"
+  }
 }
